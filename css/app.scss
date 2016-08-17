@@ -1,0 +1,120 @@
+html {
+    font-family: sans-serif;
+}
+body {
+    padding: 2rem;
+    background-color: #e6e6e6;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin-top: 0;
+    text-transform: capitalize;
+}
+
+input {
+    border: 1px solid #e6e6e6;
+    padding: 0.5rem;
+    font-size: 16px;
+}
+
+.fund-allocator-app {
+    border: 2px solid #e6e6e6;
+    background-color: #f6f6f6;
+    margin: 1rem;
+    padding: 2rem;
+}
+
+.allocation-msg {
+    padding: 2rem;
+    border: 2px solid #e6e6e6;
+    background: #fff;
+    text-align: center;
+    display: none;
+    &.max-allocation-assigned {
+        display: block;
+    }
+    &__text {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+}
+
+.fund-panels-container {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    margin: 0 -1rem;
+    padding: 0;
+}
+.fund-panel {
+    flex: 1;
+    margin: 1rem;
+    padding: 2rem;
+    background: #fff;
+    border: 2px solid #e6e6e6;
+    position: relative;
+
+    &__field {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    &__stats {
+        margin: 2rem 0 1rem;
+        line-height: 1.5rem;
+        color: #555;
+    }
+}
+
+.total-indicator {
+    margin: 0;
+    border: 1px solid #e6e6e6;
+}
+.total-indicator,
+.fund-indicator {
+    height: 16px;
+    border-radius: 4px;
+    background: #eee;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+.total-indicator__inner,
+.fund-indicator__inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+}
+.total-indicator__inner {
+    background: green;
+}
+.fund-indicator__inner {
+    background: green;
+    opacity: 0.5;
+}
+
+.fund-indicator__constrain-marker {
+    background: #ddd;
+    border-left:1px solid darken(#ddd, 5%);
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 10%;
+}
+
+.fund-controls {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+    display: flex;
+    li {
+        flex: auto;
+    }
+
+    button {
+        padding: 1rem;
+        font-size: 16px;
+    }
+}
