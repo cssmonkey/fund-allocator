@@ -35,7 +35,7 @@ var App = React.createClass({
     },
 
     // spread the investment value equally amongst each of the funds
-    autoAllocate: function(event) {
+    autoAllocate: function() {
         var funds = this.state.funds,
             fundsLength = funds.length,
             investmentValue = this.state.investmentValue,
@@ -46,6 +46,25 @@ var App = React.createClass({
         })
         this.state.sumTotalOfFunds = investmentValue;
         this.state.maxAllocationAssigned = true;
+        this.state.difference = 0;
+
+        this.setState({
+            funds: this.state.funds,
+            sumTotalOfFunds: this.state.sumTotalOfFunds,
+            maxAllocationAssigned: this.state.maxAllocationAssigned,
+            difference: this.state.difference
+        });
+    },
+
+    clearAll: function() {
+        var funds = this.state.funds;
+
+        funds.forEach((elem, i) => {
+            this.state.funds[i].value = 0;
+        });
+
+        this.state.sumTotalOfFunds = 0;
+        this.state.maxAllocationAssigned = false;
         this.state.difference = 0;
 
         this.setState({
@@ -129,11 +148,11 @@ var App = React.createClass({
                 <div className="fund-panels-container">
                     {this.state.funds.map(this.renderFund)}
                 </div>
-                <FundControls autoAllocate={this.autoAllocate} />
+                <FundControls autoAllocate={this.autoAllocate} clearAll={this.clearAll} />
                 <div className={maxAllocationMsgClassName}>
                     <span className="allocation-msg__text">{this.state.maxAllocationMessage}</span>
                 </div>
-            </div>
+            </div> 
         )
     }
 });
@@ -188,10 +207,15 @@ var FundControls = React.createClass({
         this.props.autoAllocate();
     },
 
+    clearAll: function() {
+        this.props.clearAll();
+    },
+
     render: function() {
         return(
             <ul className="fund-controls">
                 <li><button type="button" title="Assign investment equally across all funds" onClick={this.autoAllocate}>Auto allocate</button></li>
+                <li><button type="button" onClick={this.clearAll}>Clear all</button></li>
             </ul>
         )
     }

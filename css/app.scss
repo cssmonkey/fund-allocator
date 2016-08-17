@@ -107,10 +107,10 @@ input {
 .fund-controls {
     list-style: none;
     padding: 0;
-    margin: 0 0 1rem;
-    display: flex;
+    margin: 0 -1rem 1rem;
     li {
-        flex: auto;
+        display: inline-block;
+        margin: 0 1rem;
     }
 
     button {
